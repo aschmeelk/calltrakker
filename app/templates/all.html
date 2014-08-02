@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+	{% block content %}
+<div class='jumbotron'>
+	<h2 class="heading">Listing of All Calls:</h2>
+		<span class="spanner"><a href="/reports"><h4><em>Back to reports</em></h4></a></span>
+			<TABLE class="table table-bordered">
+				<tr>
+					<th>Date:</th>
+					<th>Caller:</th>
+					<th>Caller Phone:</th>
+					<th>Franchise:</th>
+					<th>Location:</th>
+					<th>Downtime:</th>
+					<th>Plant #:</th>
+					<th>Machine:</th>
+					<th>Technician:</th>
+					<th>Problem:</th>
+					<th>Solution:</th>
+				</tr>
+				{% for call in calls %}
+				<tr>
+					
+					<td>{{call.date}}</td>
+					<td>{{call.caller}}</td>
+					<td>{{call.phone}}</td>
+					<td>{{call.franchise}}</td>
+					<td>{{call.location}}</td>
+					<td>{{call.downtime}}</td>
+					<td>{{call.plant_num}}</td>
+					<td>{{call.machine}}</td>
+					<td>{{call.tech}}</td>
+					<td>{{call.problem}}</td>
+					<td>{{call.comment}}</td>
+					
+				</tr>
+				
+				{% endfor %}
+
+			</TABLE>
+
+	{% endblock %}
+</div>

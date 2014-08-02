@@ -1,0 +1,1 @@
+web: gunicorn calltrakker:app --log-file=-

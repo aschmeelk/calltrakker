@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<div class="content">
+	{% block content %}
+	<h1 class="heading">Select Report</h1>
+	<form action="" method="post" name="call">
+		{{form.hidden_tag()}}
+		<p>Select Type of Report:</br>
+        {{ form.report_type() }}
+
+        </p>
+        <p><input type="submit" value="Request Report"></p>
+		</form>
+	{% endblock %}
+</div>

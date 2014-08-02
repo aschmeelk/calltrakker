@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+	{% block content %}
+<div class='jumbotron'>
+	<h2 class="heading">Last Five Calls:</h2>
+		{% for message in get_flashed_messages() %}
+			<div class=flash>
+				{{ message }}
+			</div>
+		{% endfor %}
+			<TABLE class="table table-bordered">
+				<tr>
+					<th>Date:</th>
+					<th>Caller:</th>
+					<th>Caller Phone:</th>
+					<th>Franchise:</th>
+					<th>Location:</th>
+					<th>Downtime:</th>
+					<th>Plant #:</th>
+					<th>Machine:</th>
+					<th>Technician:</th>
+					<th>Problem:</th>
+					<th>Solution:</th>
+				</tr>
+				{% for call in calls %}
+				<tr>
+					
+					<td>{{call.date}}</td>
+					<td>{{call.caller}}</td>
+					<td>{{call.phone}}</td>
+					<td>{{call.franchise}}</td>
+					<td>{{call.location}}</td>
+					<td>{{call.downtime}}</td>
+					<td>{{call.plant_num}}</td>
+					<td>{{call.machine}}</td>
+					<td>{{call.tech}}</td>
+					<td>{{call.problem}}</td>
+					<td>{{call.comment}}</td>
+					
+				</tr>
+				{% if loop.index >= 5 %}{% break %}{% endif %}
+				{% endfor %}
+
+			</TABLE>
+</div>
+	{% endblock %}
+</div>

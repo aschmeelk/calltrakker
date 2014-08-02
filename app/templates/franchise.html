@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<div class="content">
+	{% block content %}
+	<h1 class="heading">Select Franchise:</h1>
+	<form action="/franchise" method="POST">
+		{{form.hidden_tag()}}
+		<p>Select Franchise for Report:</br>
+        {{ form.franchise() }}
+
+        </p>
+        <p><input type="submit" value="Select Franchise"></p>
+		</form>
+	{% endblock %}
+</div>
