@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 	{% block content %}
 <div class='jumbotron'>
-	<h2 class="heading">Listing of All Calls for Shop # {{ shop }}:</h2>
-		
-			<span class="spanner"><a href="/shop"><h4><em>Back to Shop Selection</em></h4></a></span>
+	<h2 class="heading">Listing of Calls by Franchise and Location:</h2>
+		<span class="spanner"><a href="/reports"><h4><em>Back to reports</em></h4></a></span>
 			<TABLE class="table table-bordered">
 				<tr>
 					<th>Date:</th>
@@ -38,6 +37,6 @@
 				{% endfor %}
 
 			</TABLE>
-	
+
 	{% endblock %}
 </div>

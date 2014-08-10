@@ -122,7 +122,7 @@ class SelectReport(Form):
                                                         ('shop','by_shop_num'),
                                                         ('franchise','by_franchise'),
                                                         ('machine','by_machine'),
-                                                        ('calls','by_most_calls'),
+                                                        ('most','by_most_calls'),
                                                         ('downtime','by_downtime')], validators=[InputRequired()])
 
 
@@ -256,6 +256,15 @@ class SelectFranchise(Form):
                                                   ('Valley','Valley'),
                                                   ('Ziegler','Ziegler')], validators=[InputRequired()])
         
-
-        
-
+class SelectMachine(Form):
+    """docstring for SelectMachine"""
+    machine = SelectField('machine', choices = [('autoclave','autoclave'),
+                                                 ('buffer','buffer'),
+                                                 ('pm builder','pm builder'),
+                                                 ('cm builder','cm builder'),
+                                                 ('press','press'),
+                                                 ('cia_1_2','cia_1_2'),
+                                                 ('cia_3','cia_3'),
+                                                 ('xray','xray'),
+                                                 ('ndt','ndt'),
+                                                 ('final','final')], validators=[InputRequired()])

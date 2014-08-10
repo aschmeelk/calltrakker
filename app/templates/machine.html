@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+<div class="content">
+	{% block content %}
+	<h1 class="heading">Select Machine</h1>
+	<span class="spanner"><a href="/reports"><h4><em>Back to Reports</em></h4></a></span>
+	<form action="/machine" method="POST">
+		{{form.hidden_tag()}}
+		<p>Select Machine for Report:</br>
+        {{ form.machine() }}
+
+        </p>
+        <p><input type="submit" value="Select Machine"></p>
+		</form>
+	{% endblock %}
+</div>

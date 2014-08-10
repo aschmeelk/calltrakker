@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, g, redirect, url_for, flash
-from app.forms import AddCall, SelectReport, SelectShop, SelectFranchise
+from app.forms import AddCall, SelectReport, SelectShop, SelectFranchise, SelectMachine                       
 from app.models import Calls
 
 
@@ -44,6 +44,12 @@ def reports():
             return redirect(url_for('shop'))
         elif form.report_type.data == 'franchise':
             return redirect(url_for('franchise'))
+        elif form.report_type.data == 'machine':
+            return redirect(url_for('machine'))
+        elif form.report_type.data == 'most':
+            return redirect(url_for('most'))
+        elif form.report_type.data == 'downtime':
+            return redirect(url_for('downtime'))
 
     return render_template('reports.html', form=form)
 
@@ -62,6 +68,15 @@ def shop():
         return redirect(url_for('by_num', shop_num=shop_num))
     return render_template('shop.html', form = form)
 
+@app.route('/most', methods=['GET','POST'])
+def most():
+    most_calls = Calls.query.order_by('franchise','location').all()
+    return render_template('most.html', calls=most_calls)
+
+@app.route('/downtime', methods=['GET','POST'])
+def downtime():
+    most_downtime = Calls.query.order_by('downtime desc').all()
+    return render_template('downtime.html', calls = most_downtime)
 
 @app.route('/by_num/<shop_num>', methods = ['GET','POST'])
 def by_num(shop_num):
@@ -82,4 +97,18 @@ def franchise():
 def by_franchise(franchise):
     lst = Calls.query.filter_by(franchise = franchise).all()
     return render_template('by_franchise.html',franchise=franchise, calls=lst)
-    
+
+@app.route('/machine', methods=['GET','POST'])
+def machine():
+    form = SelectMachine()
+    machine = form.machine.data
+    if form.validate_on_submit():
+        return redirect(url_for('by_machine', machine = machine))
+    return render_template('machine.html', form = form)
+
+
+@app.route('/by_machine/<machine>', methods=['GET','POST'])
+def by_machine(machine):
+    lst = Calls.query.filter_by(machine = machine).all()
+    return render_template('by_machine.html', machine=machine, calls=lst)
+        
