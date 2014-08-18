@@ -9,13 +9,39 @@
 		</div>
 	{% endfor %}
 	</p>
-	<span class="spanner"><a href="/reports"><h4><em>Reports</em></h4></a></span>  <span class="spanner"><a href="/"><h4><em>Home</em></h4></a></span>
+	<span class="spanner">
+		<table class="table">
+			<tr>
+				<td>
+					
+					<a href="/reports">
+						<h4>
+							<em>Reports</em>
+						</h4>
+					</a>
+					
+				</td>
+				<td>
+
+					
+						<a href="/">
+							<h4>
+								<em>Home</em>
+							</h4>
+						</a>
+					
+				</td>
+			</tr>
+		</table>
+	</span>
 	<form action="" method="post" name="call">
 		{{form.hidden_tag()}}
 		<p>
 			<p><h4>Please enter call data below:</h4></p>
 			Date(yyyy-mm-dd):</br>
+			
 			{{form.date()}}</br>
+			
 			{% for error in form.errors.date %}
         		<span style="color: red;">[{{error}}]</span>
         	{% endfor %}<br>

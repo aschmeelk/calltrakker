@@ -1,7 +1,13 @@
-from app import app, db
+from app import app, db, admin
 from flask import render_template, g, redirect, url_for, flash
 from app.forms import AddCall, SelectReport, SelectShop, SelectFranchise, SelectMachine                       
 from app.models import Calls
+from flask.ext.admin.contrib.sqla import ModelView
+
+
+# Admin views for modifying records
+# need to make this available via log in only.
+admin.add_view(ModelView(Calls, db.session))
 
 
 @app.route('/')
