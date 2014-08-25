@@ -39,8 +39,12 @@
 		<p>
 			<p><h4>Please enter call data below:</h4></p>
 			Date(yyyy-mm-dd):</br>
-			
-			{{form.date()}}</br>
+
+			<div class="input-group date">
+				<input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="date" type="text" 
+				value="{{ form.date.data }}" name="date">
+				<span class="input-group-addon"><i class="icon-th"></i></span>
+			</div>
 			
 			{% for error in form.errors.date %}
         		<span style="color: red;">[{{error}}]</span>
@@ -98,5 +102,13 @@
 		</p>
 		<p><input type="submit" value="Add Call"></p>
 		</form>
+		
+		<script type="text/javascript">
+		$('date').datepicker({
+			format: "yyyy-mm-dd"
+		});
+		</script>
+
+		
 	{% endblock %}
 </div>
